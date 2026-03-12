@@ -11,8 +11,8 @@ st.set_page_config(page_title="UPF Master Calendar", layout="wide")
 
 st.title("UPF Integrated Master Calendar")
 
-if 'token' not in st.session_state or not st.session_state.token:
-    st.error("Please login from the Dashboard first.")
+if 'token' not in st.session_state or st.session_state.token is None:
+    st.switch_page("streamlit_app.py")
     st.stop()
 
 # Fetch all types of bookings
