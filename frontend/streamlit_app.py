@@ -67,6 +67,20 @@ def login():
 
 def main():
     if not st.session_state.token:
+        # Hide the sidebar and the hamburger menu completely when not logged in
+        st.markdown(
+            """
+            <style>
+                [data-testid="stSidebar"] {
+                    display: none;
+                }
+                [data-testid="collapsedControl"] {
+                    display: none;
+                }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
         login()
     else:
         st.sidebar.title(f"Welcome, {st.session_state.user['full_name']}")
@@ -117,6 +131,6 @@ def main():
             st.info("📦 Equipment Inventory")
             st.info("📈 Reports & Analytics")
             st.info("🅿️ Parking Registry")
-
+            
 if __name__ == "__main__":
     main()
